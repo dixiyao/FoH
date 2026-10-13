@@ -1,0 +1,9 @@
+# ScienceAgentBench runs its official containerized verifier out of the pinned
+# upstream checkout (third_party/scienceagentbench.lock.json). These are the
+# host-side packages that harness needs; every scientific dependency of a
+# generated program is installed inside the per-instance evaluation image.
+datasets>=3.1.0
+docker>=7.1.0
+python-dotenv>=1.0.1
+requests>=2.32.3
+tqdm>=4.67.0

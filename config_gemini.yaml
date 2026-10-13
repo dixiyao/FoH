@@ -1,0 +1,49 @@
+# Direct Google AI Studio API. Export GEMINI_API_KEY before running.
+# Use api_key_env: GOOGLE_API_KEY if that is your existing variable name.
+model:
+  provider: gemini
+  name: gemini-2.5-flash
+  api_key_env: GEMINI_API_KEY
+  base_url: https://generativelanguage.googleapis.com/v1beta
+  temperature: 0.4
+  top_p: 1.0
+  top_k: 0
+  max_tokens: 8192
+  revision_max_tokens: 16384
+  reasoning_effort: null
+  timeout_seconds: 180
+  retries: 2
+
+search:
+  provider: null
+  api_key_env: null
+  base_url: null
+  max_results: 5
+
+hermes:
+  enabled: true
+  source_dir: .hermes/hermes-agent
+  python_executable: .hermes/venv/bin/python
+  sandbox_executable: /usr/bin/bwrap
+  upstream_url: https://github.com/NousResearch/hermes-agent.git
+  revision: fcbd1076a93841fa88855acce810e342a5b78101
+  toolsets: [terminal, file, todo, web, skills]
+  max_iterations: 15
+  require_external_for_remote: true
+
+num_workers: 1
+skill_paths: []
+mcp_servers: []
+
+limits:
+  max_rounds: 16
+  max_model_calls: 64
+  max_total_tokens: 250000
+  max_global_model_concurrency: 32
+  max_total_agents: 8
+  max_parallel_agents: 4
+  max_agent_depth: 2
+  max_tool_calls: 64
+  max_elapsed_seconds: 1800
+  max_trace_chars: 1200
+  max_command_seconds: 300

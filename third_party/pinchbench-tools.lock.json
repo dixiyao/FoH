@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "node": "22.23.2",
+    "gws": "0.22.5",
+    "gh": "2.98.0",
+    "fws": "0.4.4"
+  },
+  "fws": {
+    "package": "@juppytt/fws",
+    "npm_tarball": "https://registry.npmjs.org/@juppytt/fws/-/fws-0.4.4.tgz",
+    "npm_integrity": "sha512-bndvUIgrId7SveOkbtlbTzNl4P9LCJ85HKOH5zcQaOSMyI8UtYfTE/9liDe3rb5zd/bMCvf144Zb6Cstn/i2Vg==",
+    "upstream": "https://github.com/juppytt/fws",
+    "revision": "d9f7e3067769814f28ce5fd05888f586bd52977e"
+  },
+  "platforms": {
+    "linux-x86_64": {
+      "node": {
+        "url": "https://nodejs.org/dist/v22.23.2/node-v22.23.2-linux-x64.tar.xz",
+        "sha256": "d60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307",
+        "format": "tar",
+        "strip_components": 1
+      },
+      "gws": {
+        "url": "https://github.com/googleworkspace/cli/releases/download/v0.22.5/google-workspace-cli-x86_64-unknown-linux-gnu.tar.gz",
+        "sha256": "de78ecdbd2f1a84cca0063a7ecbc440240fc14b6ebccbb17f4646b792a8c5c1f",
+        "format": "tar"
+      },
+      "gh": {
+        "url": "https://github.com/cli/cli/releases/download/v2.98.0/gh_2.98.0_linux_amd64.tar.gz",
+        "sha256": "3b8ac6b30336802fc1a858d7c084e11cdf24ac1a761ca90b68022d7d729208de",
+        "format": "tar"
+      }
+    },
+    "linux-arm64": {
+      "node": {
+        "url": "https://nodejs.org/dist/v22.23.2/node-v22.23.2-linux-arm64.tar.xz",
+        "sha256": "fff4078c5def658577f92c88db7db3bc0072924bfb93fe52c1e744a54e94abb8",
+        "format": "tar",
+        "strip_components": 1
+      },
+      "gws": {
+        "url": "https://github.com/googleworkspace/cli/releases/download/v0.22.5/google-workspace-cli-aarch64-unknown-linux-gnu.tar.gz",
+        "sha256": "94490295d9580e1e88574e715a0a162991747d12d62f8c7b8dcc8268b6c1cea0",
+        "format": "tar"
+      },
+      "gh": {
+        "url": "https://github.com/cli/cli/releases/download/v2.98.0/gh_2.98.0_linux_arm64.tar.gz",
+        "sha256": "cf689084f3a3618f7eae4a2420d335d74626d65f5e594b9828d125d69f800d86",
+        "format": "tar"
+      }
+    },
+    "darwin-x86_64": {
+      "node": {
+        "url": "https://nodejs.org/dist/v22.23.2/node-v22.23.2-darwin-x64.tar.xz",
+        "sha256": "96dff79f4e19a78715da559ec7cac2028f4985a175ea0c3454625a269c21deb7",
+        "format": "tar",
+        "strip_components": 1
+      },
+      "gws": {
+        "url": "https://github.com/googleworkspace/cli/releases/download/v0.22.5/google-workspace-cli-x86_64-apple-darwin.tar.gz",
+        "sha256": "51f9bd731404d4bba26c36e2e30dd68c56dccd1f834c01252cb0b14d6a6544b2",
+        "format": "tar"
+      },
+      "gh": {
+        "url": "https://github.com/cli/cli/releases/download/v2.98.0/gh_2.98.0_macOS_amd64.zip",
+        "sha256": "734c7bbd0bc56a3974500ee9aea74d60f0e5b89be09e92b9d9148939a3a1e0e6",
+        "format": "zip"
+      }
+    },
+    "darwin-arm64": {
+      "node": {
+        "url": "https://nodejs.org/dist/v22.23.2/node-v22.23.2-darwin-arm64.tar.xz",
+        "sha256": "5eff7a9011895aae3f29d06f167b84a62b028a591370c7cafb59103559fd26e1",
+        "format": "tar",
+        "strip_components": 1
+      },
+      "gws": {
+        "url": "https://github.com/googleworkspace/cli/releases/download/v0.22.5/google-workspace-cli-aarch64-apple-darwin.tar.gz",
+        "sha256": "1d2a9ffd5bc9b2c2c4b48630daf082fad13d9e57d741988a2c248eed562f7dac",
+        "format": "tar"
+      },
+      "gh": {
+        "url": "https://github.com/cli/cli/releases/download/v2.98.0/gh_2.98.0_macOS_arm64.zip",
+        "sha256": "8cfb027cc5310675f2b830eac8f9865c1155a45ffcf9757f699fdd5a22046ca4",
+        "format": "zip"
+      }
+    }
+  }
+}

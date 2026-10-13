@@ -1,0 +1,29 @@
+# Core transport and configuration.
+litellm>=1.40.0
+requests>=2.31.0
+
+# Provider SDK used by utils.chat(provider="gemini") (the default).
+google-genai>=1.0.0
+
+# Document/data parsers used by benchmark tasks. The runtime never installs
+# packages on behalf of an agent.
+pypdf>=4.0.0
+pdfplumber>=0.11.0
+openpyxl>=3.1.0
+python-docx>=1.1.0
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+PyYAML>=6.0
+tomli>=2.0; python_version < "3.11"
+
+# Optional — only if you run a local open-source model (provider="huggingface").
+# torch>=2.1.0
+# transformers>=4.43.0
+
+# Optional — only if you expose MCP tools to the agent (mcp_servers=[...]).
+# mcp>=1.0.0
+
+# Note: OpenAI / OpenRouter / Grok use the OpenAI-compatible HTTP path (requests)
+# or litellm; no extra SDK required. API keys are read from the environment:
+#   GEMINI_API_KEY / OPENAI_API_KEY / ANTHROPIC_API_KEY / OPENROUTER_API_KEY / XAI_API_KEY
+# Optional web search keys: SERPER_API_KEY / TAVILY_API_KEY / BING_API_KEY

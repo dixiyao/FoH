@@ -1,0 +1,60 @@
+model:
+  provider: openrouter
+  name: deepseek/deepseek-v4-flash-0731
+  api_key_env: OPENROUTER_API_KEY
+  base_url: https://openrouter.ai/api/v1
+  temperature: 0.4
+  top_p: 1.0
+  top_k: 0
+  max_tokens: 8192
+  # Measured revision ceiling; larger requests caused excessive provider latency.
+  revision_max_tokens: 16384
+  reasoning_effort: null
+  timeout_seconds: 180
+  retries: 2
+
+# null uses Hermes native keyless web search; explicit providers require a key.
+search:
+  provider: null
+  api_key_env: null
+  base_url: null
+  max_results: 5
+
+# Install the pinned runtime with scripts/bootstrap_hermes.py.
+hermes:
+  enabled: true
+  source_dir: .hermes/hermes-agent
+  python_executable: .hermes/venv/bin/python
+  # Required Linux filesystem sandbox for operational runs.
+  sandbox_executable: /usr/bin/bwrap
+  upstream_url: https://github.com/NousResearch/hermes-agent.git
+  revision: fcbd1076a93841fa88855acce810e342a5b78101
+  toolsets: [terminal, file, todo, web, skills, image_gen]
+  max_iterations: 15
+  require_external_for_remote: true
+
+num_workers: 8
+skill_paths: []
+mcp_servers: []
+
+limits:
+  max_rounds: 16
+  max_model_calls: 64
+  max_total_tokens: 250000
+  max_global_model_concurrency: 32
+  max_total_agents: 8
+  max_parallel_agents: 4
+  max_agent_depth: 2
+  max_tool_calls: 64
+  max_elapsed_seconds: 1800
+  max_trace_chars: 1200
+  max_command_seconds: 300
+
+# Optional: publish every evolved harness as a git branch so clients pull
+# `iteration-NNN` instead of reading the server's filesystem
+# (see README "Distributing harnesses through git").
+harness_git:
+  enabled: false
+  repo: ""              # bare repo path on a shared filesystem, or any git URL
+  branch_prefix: iteration-
+  push: true
