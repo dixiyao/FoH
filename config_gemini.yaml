@@ -8,8 +8,8 @@ model:
   temperature: 0.4
   top_p: 1.0
   top_k: 0
-  max_tokens: 8192
-  revision_max_tokens: 16384
+  max_tokens: 16384
+  revision_max_tokens: 32768
   reasoning_effort: null
   timeout_seconds: 180
   retries: 2

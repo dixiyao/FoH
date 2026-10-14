@@ -6,9 +6,9 @@ model:
   temperature: 0.4
   top_p: 1.0
   top_k: 0
-  max_tokens: 8192
+  max_tokens: 16384
   # Measured revision ceiling; larger requests caused excessive provider latency.
-  revision_max_tokens: 16384
+  revision_max_tokens: 32768
   reasoning_effort: null
   timeout_seconds: 180
   retries: 2
@@ -39,7 +39,7 @@ mcp_servers: []
 
 limits:
   max_rounds: 16
-  max_model_calls: 64
+  max_model_calls: 30
   max_total_tokens: 250000
   max_global_model_concurrency: 32
   max_total_agents: 8

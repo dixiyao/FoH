@@ -12,42 +12,6 @@ that itself imports from the claw_eval package (scoring_components like
 tool_called/categories_present, plus an LLM-judge rubric, plus safety_checks
 like "must not call gmail_send_message").
 
-Architecture note (why this file is shaped the way it is): claw_eval's own
-reference agent loop (claw_eval.runner.loop.run_task) drives a single LLM
-directly via an OpenAI-compatible provider — plugging FoH's own evolvable
-client_agent in as a "provider" would only let it answer individual turns,
-not actually run its own decision loop (spawn_agent, retries, its own finish
-protocol, ...), which defeats the point of benchmarking the evolved agent at
-all. So this runner bypasses claw_eval.runner.loop/providers entirely and
-instead reuses, directly, the pieces that matter for fidelity:
-  - claw_eval.models.task.TaskDefinition.from_yaml  -- task loading
-  - claw_eval.runner.services.ServiceManager         -- mock-service lifecycle
-  - claw_eval.runner.dispatcher.ToolDispatcher        -- HTTP tool dispatch
-  - claw_eval.graders.registry.get_grader             -- official per-task grading
-  - claw_eval.graders.llm_judge.LLMJudge              -- the judge graders call
-  - claw_eval.models.scoring.compute_task_score/is_pass
-while FoH's own client_agent (via client.solve_task -> load_agent -> the
-active, possibly-evolved agent code) drives every decision.
-
-The remaining wrinkle: agent_runtime.federation._run_batch (the shared
-solve/grade pipeline every task_*.py plugs into) has no per-case hook to hand
-solve_task() a custom ToolRegistry. The one existing per-task tool-extension
-point it does have is RuntimeContext.metadata["mcp_servers"], already wired
-through agent_runtime.mcp.register_mcp_servers. So each task's own tools
-(gmail_list_messages, etc.) are exposed through a tiny per-task MCP server
-(tasks/_claweval_mcp_bridge.py) rather than a bespoke ToolRegistry — see that
-file's docstring for why it's stateless per call.
-
-Known fidelity gap (disclosed, not silent): BenchmarkCase.context() never
-sets RuntimeContext.allowed_tools, so the agent also keeps FoH's generic
-list_files/read_file/write_file/run_command/fetch_url tools alongside the
-task's own MCP-bridged ones, instead of being restricted to only the latter
-the way claw_eval's own reference agent is. Scoring is still accurate for
-what it checks (tool_called/categories_present/safety_checks key off of
-which tools were actually dispatched, tracked faithfully regardless), but an
-agent could in principle solve a task via generic tools without ever
-exercising the intended mock-service tools.
-
 Train phase:
   - load Claw-Eval general-split tasks (tasks/T*/task.yaml under the bench repo)
   - run train tasks through client.solve_task(...)

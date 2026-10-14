@@ -1,8 +1,0 @@
-{
-  "name": "foh-pinchbench-fws-runtime",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "@juppytt/fws": "0.4.4"
-  }
-}
